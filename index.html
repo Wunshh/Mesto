@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pages/index.css">
+    <title>Место</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/header__logo.png" alt="Место">
+    </header>
+ <main>
+      <section class="profil">
+          <img class="profil__avatar" src="./images/Avatar.jpg" alt="Фото профиля">
+          <div class="profil__info">
+              <div class="profil__container">
+                  <h1 class="profil__name">Жак-Ив Кусто</h1>
+                  <button type="button" class="profil__edit-button element-hover"></button>
+              </div>
+              <p class="profil__career">Исследователь океана</p>
+          </div>
+          <div class="profil__container">
+              <button type="button" class="profil__add-button element-hover"></button>
+          </div> 
+      </section>
+
+      <section class="grid-galery">
+          <div class="cards">
+              <div class="card">
+                  <img class="card__image" src="./images/karachaevsk_1.jpg" alt="Карачаево-Черкесия">
+                  <div class="card__container">
+                      <h2 class="card__title">Карачаево-Черкесия</h2>
+                      <button type="button" class="card__button element-hover"></button>
+                  </div>
+              </div>
+
+              <div class="card">
+                <img class="card__image" src="./images/Elbruse_2.jpg" alt="Гора Эльбрус">
+                <div class="card__container">
+                  <h2 class="card__title">Гора Эльбрус</h2>
+                  <button type="button" class="card__button element-hover"></button>
+                </div>
+              </div>
+
+              <div class="card">
+                  <img class="card__image" src="./images/dombai3.jpg" alt="Домбай">
+                  <div class="card__container">
+                      <h2 class="card__title">Домбай</h2>
+                      <button type="button" class="card__button element-hover"></button>
+                 </div>
+              </div>
+
+              <div class="card">
+                  <img class="card__image" src="./images/Itsyl.jpg" alt="Хребет Ицыл">
+                  <div class="card__container">
+                     <h2 class="card__title">Хребет Ицыл</h2>
+                     <button type="button" class="card__button element-hover"></button>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <img class="card__image" src="./images/Kamchatka.jpg" alt="Камчатка">
+                  <div class="card__container">
+                     <h2 class="card__title">Камчатка</h2>
+                     <button type="button" class="card__button element-hover"></button>
+                  </div> 
+              </div>
+
+              <div class="card">
+                  <img class="card__image" src="./images/sochi.jpg" alt="Сочи">
+                  <div class="card__container">
+                     <h2 class="card__title">Сочи</h2>
+                     <button type="button" class="card__button element-hover"></button>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section class="popup">
+          <div class="popup__overlay"></div>
+          <form class="form">
+             <h2 class="form__title">Редактировать профиль</h2>
+             <button type="button" class="popup__close-button element-hover"><img class="button__image" src="./images/Close_Icon.svg" alt="Закрыть"></button>
+             <input class="form__name" type="text" placeholder="Имя Фамилия"></input>
+             <input class="form__career" type="text" placeholder="Профессия"></input>
+             <button type="button" class="form__save-button element-hover">Сохранить</button>
+          </form>
+      </section>
+  </main>   
+
+  <footer class="footer">
+      <div class="footer__copyright">&copy; 2020 Mesto Russia</div>
+  </footer>
+    <script src="script.js"></script>
+</body>
+</html>
