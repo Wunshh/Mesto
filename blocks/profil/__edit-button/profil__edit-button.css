@@ -1,0 +1,9 @@
+.profil__edit-button {
+    margin-left: 18px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    background-image: url('../../../images/Edit_Button.svg');
+    border: none;
+    align-self: flex-end;
+}
