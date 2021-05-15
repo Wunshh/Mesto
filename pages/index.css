@@ -135,6 +135,7 @@
     max-width: 880px;
     margin: 0 auto;я
 }
+
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 282px);
@@ -200,9 +201,11 @@
     align-self: center;
     width: 22px;
     height: 19px;
-    background-image: url('../images/heart.svg');
     background-color: transparent;
-    border: none;
+}
+
+.card__button_active {
+    background: url('../images/heart_activ.svg');
 }
 
 .footer {
@@ -221,6 +224,7 @@
 
 .popup {
    display: none;
+   position: relative;
 }
 
 .popup__overlay {
@@ -266,9 +270,9 @@
     width: 40px;
     height: 40px;
     padding: 0;
-    position: fixed;
-    left: 66.15%;
-    top: 155px;
+    position: absolute;
+    right: -40px;
+    top: -40px;
     border: none;
     background-color: transparent;
 }
