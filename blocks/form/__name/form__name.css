@@ -8,6 +8,6 @@
 
 @media screen and (max-width: 767px) {
     .form__name {
-        margin: 75px 0 30px
+        margin: 75px 0 30px;
     }
 }
