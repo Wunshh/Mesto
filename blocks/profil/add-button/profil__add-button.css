@@ -3,8 +3,27 @@
     height: 50px;
     background-color: transparent;
     background-image: url('../../../images/Add_Button.svg');
-    border: none;
     position: absolute;
     right: 0;
     top: calc(50% - 25px);
+    padding: 0;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .profil__add-button {
+        right: 24px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profil__add-button {
+        width: 282px;
+        position: relative;
+        right: 0;
+    }
 }

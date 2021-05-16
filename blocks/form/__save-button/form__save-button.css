@@ -10,4 +10,13 @@
     text-align: center; 
     color: #FFFFFF;
     border: none;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .form__save-button {
+        font-size: 14px;
+        line-height: 17px;
+        height: 46px;
+    }
 }
