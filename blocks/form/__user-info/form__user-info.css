@@ -1,0 +1,11 @@
+.form__user-info {
+    font-family: "Inter", "Arial", sans-serif;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+.form__user-info:nth-of-type(2n) {
+    margin-top: 30px;
+}

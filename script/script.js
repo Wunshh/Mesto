@@ -1,49 +1,28 @@
-let popupButtonOpen = document.querySelector('.profil__edit-button');
-let popupOpen = document.querySelector('.popup');
+let popupButtonOpen = document.querySelector(".profile__edit-button");
+let popupClose = document.querySelector(".popup");
+let popupButtonClose = document.querySelector(".popup__close-button");
+let formElement = document.querySelector(".form");
+let nameInput = document.querySelector(".form__user-info_name");
+let jobInput = document.querySelector(".form__user-info_job");
+let profilName = document.querySelector(".profile__name");
+let profilCareer = document.querySelector(".profile__career");
+let saveButton = document.querySelector(".form__save-button");
 
+function closeOrOpenPopup() {
+    popupClose.classList.toggle("popup_open");
+}
 
-popupButtonOpen.addEventListener('click', function () {
-    popupOpen.classList.remove('popup');
-});
+popupButtonOpen.addEventListener("click", closeOrOpenPopup);
 
-let popupButtonClose = document.querySelector('.popup__close-button');
+popupButtonClose.addEventListener("click", closeOrOpenPopup);
 
+function formSubmitHandler(evt) {
+    evt.preventDefault();
 
-popupButtonClose.addEventListener('click', function () {
-    popupOpen.classList.add('popup');
-});
+    profilName.textContent = nameInput.value;
+    profilCareer.textContent = jobInput.value;
 
-let like = document.querySelectorAll('.card__button');
+    saveButton.addEventListener("click", closeOrOpenPopup);
+}
 
-for (let i = 0; i < like.length; i++) {
-	like[i].addEventListener ('click', function() {
-		like[i].classList.toggle('card__button_active');
-	});
-}; 		
-
-
-let formElement = document.querySelector('.form');
-
-function formSubmitHandler (evt) {
-	evt.preventDefault(); 
-
-	let nameInput = document.querySelector('.form__name');
-	let jobInput = document.querySelector('.form__career');
-
-	let name = nameInput.value;
-	let job = jobInput.value; 
-
-	let profilName = document.querySelector('.profil__name');
-	let profilCareer = document.querySelector('.profil__career');
-
-	profilName.textContent = name;
-	profilCareer.textContent = job;
-};
-
-formElement.addEventListener('submit', formSubmitHandler);
-
-let saveButton = document.querySelector('.form__save-button');
-
-saveButton.addEventListener('click', function() {
-	popupOpen.classList.add('popup');
-})
+formElement.addEventListener("submit", formSubmitHandler);

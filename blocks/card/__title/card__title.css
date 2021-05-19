@@ -10,5 +10,5 @@
     overflow: hidden;
     margin: 0;
     box-sizing: border-box;
-    padding-right: 30px;
+    max-width: 210px;
 }
