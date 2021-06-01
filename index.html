@@ -25,54 +25,8 @@
             </section>
 
             <section class="grid-galery">
-                    <div class="card">
-                        <img class="card__image" src="./images/karachaevsk_1.jpg" alt="Карачаево-Черкесия" />
-                        <div class="card__container">
-                            <h2 class="card__title">Карачаево-Черкесия</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <img class="card__image" src="./images/Elbruse_2.jpg" alt="Гора Эльбрус" />
-                        <div class="card__container">
-                            <h2 class="card__title">Гора Эльбрус</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="card__image" src="./images/dombai3.jpg" alt="Домбай" />
-                        <div class="card__container">
-                            <h2 class="card__title">Домбай</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="card__image" src="./images/Itsyl.jpg" alt="Хребет Ицыл" />
-                        <div class="card__container">
-                            <h2 class="card__title">Хребет Ицыл</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="card__image" src="./images/Kamchatka.jpg" alt="Камчатка" />
-                        <div class="card__container">
-                            <h2 class="card__title">Камчатка</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="card__image" src="./images/sochi.jpg" alt="Сочи" />
-                        <div class="card__container">
-                            <h2 class="card__title">Сочи</h2>
-                            <button type="button" class="card__button"></button>
-                        </div>
-                    </div>
-            </section>
+            </section> 
 
         </main>
 
@@ -80,17 +34,48 @@
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <div class="popup popup_type_edit">
             <div class="popup__container">
                 <button type="button" class="popup__close-button"></button>
                 <form class="form" name="submitForm">
                     <h2 class="form__title">Редактировать профиль</h2>
-                    <input class="form__user-info form__user-info_user_name" name="userName" type="text" value="Жак-Ив Кусто" required placeholder="Введите имя">
-                    <input class="form__user-info form__user-info_user_job" name="userJob" type="text" value="Исследователь океана" required placeholder="Введите профессию">
+                    <input class="form__user-info form__user-info_user_name" name="userName" type="text" required placeholder="Введите имя">
+                    <input class="form__user-info form__user-info_user_job" name="userJob" type="text" required placeholder="Введите профессию">
                     <button type="submit" class="form__save-button">Сохранить</button>
                 </form>
             </div>
         </div>
+
+        <div class="popup popup_type_new-card">
+            <div class="popup__container">
+                <button type="button" class="popup__close-button"></button>
+                <form class="form" name="submitForm">
+                    <h2 class="form__title">Новое место</h2>
+                    <input class="form__user-info form__user-info_photo_name" name="userPhoto" type="text" placeholder="Название">
+                    <input class="form__user-info form__user-info_photo_src" name="userScr" type="url" placeholder="Ссылка на картинку">
+                    <button type="button" class="form__save-button">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+       <div class="popup-image popup_type_image">
+            <div class="popup__container">
+                <button type="button" class="popup__close-button"></button>
+                <img class="popup__image" alt="Место">
+                <h3 class="popup__title"></h3>
+            </div>
+        </div>
+
+        <template id="template-card">
+            <div class="card">
+                <img class="card__image" alt="Место">
+                <button type="button" class="card__remove-button"></button>
+                <div class="card__container">
+                    <h2 class="card__title"></h2>
+                    <button type="button" class="card__button"></button>
+                </div>
+            </div>
+        </template>
 
         <script src="script/script.js"></script>
     </body>
