@@ -68,7 +68,6 @@ popupButtonOpen.addEventListener("click", openPopup);
 
 popupButtonClose.addEventListener("click", closePopup);
 
-
 function toggleModal(modal) {
     modal.classList.toggle("popup_open");
 }
@@ -101,23 +100,22 @@ function initialCardElement(element) {
     console.log(popupOpenTitle);
 
     popupOpenImage.addEventListener("click", function (element) {
+        toggleModal(popupTypeImage);
+        popupImage.src = popupOpenImage.src;
+        popupImage.alt = popupOpenImage.alt;
+        popupTitle.textContent = popupOpenTitle.textContent;
+    });
 
-    toggleModal(popupTypeImage)
-    popupImage.src = popupOpenImage.src;
-    popupImage.alt = popupOpenImage.alt;
-    popupTitle.textContent = popupOpenTitle.textContent;
-  })
+    setEventListeners(cardTemplate);
 
-   setEventListeners(cardTemplate);
-
-   cardList.append(cardTemplate);
+    cardList.append(cardTemplate);
 }
 
 function initialCardElements() {
     initialCards.forEach(initialCardElement);
 }
 
-initialCardElements()
+initialCardElements();
 
 function handlerDelete(evt) {
     evt.target.closest(".card").remove();
@@ -145,12 +143,11 @@ function initialNewCard(submit) {
     console.log(popupOpenTitle);
 
     popupOpenImage.addEventListener("click", function (element) {
-
-    toggleModal(popupTypeImage)
-    popupImage.src = popupOpenImage.src;
-    popupImage.alt = popupOpenImage.alt;
-    popupTitle.textContent = popupOpenTitle.textContent;
-  });
+        toggleModal(popupTypeImage);
+        popupImage.src = popupOpenImage.src;
+        popupImage.alt = popupOpenImage.alt;
+        popupTitle.textContent = popupOpenTitle.textContent;
+    });
 
     setEventListeners(newCardTemplate);
 
