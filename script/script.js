@@ -68,12 +68,14 @@ popupButtonOpen.addEventListener("click", openPopup);
 
 popupButtonClose.addEventListener("click", closePopup);
 
+
 function toggleModal(modal) {
     modal.classList.toggle("popup_open");
 }
 
 popupAddPhotoButton.addEventListener("click", () => toggleModal(popupTypeNewCard));
 popupNewCardButtonClose.addEventListener("click", () => toggleModal(popupTypeNewCard));
+popupTypeImageCloseButton.addEventListener("click", () => toggleModal(popupTypeImage));
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -86,10 +88,6 @@ function formSubmitHandler(evt) {
 
 formElement.addEventListener("submit", formSubmitHandler);
 
-function initialCardElements() {
-    initialCards.forEach(initialCardElement);
-}
-
 function initialCardElement(element) {
     const cardTemplate = document.querySelector("#template-card").content.cloneNode(true);
 
@@ -97,23 +95,26 @@ function initialCardElement(element) {
     cardTemplate.querySelector(".card__image").src = element.link;
     cardTemplate.querySelector(".card__image").alt = element.name;
 
-    setEventListeners(cardTemplate);
-
-    cardList.append(cardTemplate);
-
     const popupOpenImage = cardTemplate.querySelector(".card__image");
 
     const popupOpenTitle = cardTemplate.querySelector(".card__title");
+    console.log(popupOpenTitle);
 
-   popupOpenImage.addEventListener("click", function (element) {
+    popupOpenImage.addEventListener("click", function (element) {
 
+    toggleModal(popupTypeImage)
     popupImage.src = popupOpenImage.src;
     popupImage.alt = popupOpenImage.alt;
-    popupTitle.textContent = popupOpenTitle;
-
-    toggleModal(popupTypeImage);
+    popupTitle.textContent = popupOpenTitle.textContent;
   })
-   return cardTemplate
+
+   setEventListeners(cardTemplate);
+
+   cardList.append(cardTemplate);
+}
+
+function initialCardElements() {
+    initialCards.forEach(initialCardElement);
 }
 
 initialCardElements()
@@ -138,6 +139,19 @@ function initialNewCard(submit) {
     newCardTemplate.querySelector(".card__image").src = photoSrcInput.value;
     newCardTemplate.querySelector(".card__image").alt = photoNameInput.value;
 
+    const popupOpenImage = newCardTemplate.querySelector(".card__image");
+
+    const popupOpenTitle = newCardTemplate.querySelector(".card__title");
+    console.log(popupOpenTitle);
+
+    popupOpenImage.addEventListener("click", function (element) {
+
+    toggleModal(popupTypeImage)
+    popupImage.src = popupOpenImage.src;
+    popupImage.alt = popupOpenImage.alt;
+    popupTitle.textContent = popupOpenTitle.textContent;
+  });
+
     setEventListeners(newCardTemplate);
 
     cardList.prepend(newCardTemplate);
@@ -151,16 +165,3 @@ function initialNewCard(submit) {
 }
 
 popupTypeNewCardSaveButton.addEventListener("click", initialNewCard);
-
-
-// const popupOpenImage = document.querySelector(".card__image");
-// const popupOpenTitle = document.querySelector(".card__title");
-
-// popupOpenImage.addEventListener("click", function (element) {
-
-// popupImage.src = popupOpenImage.src;
-// popupImage.alt = popupOpenImage.alt;
-// popupTitle.textContent = popupOpenTitle;
-// toggleModal(popupTypeImage);
-
-// });
