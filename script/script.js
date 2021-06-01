@@ -33,11 +33,11 @@ const initialCards = [
     },
     {
         name: "Хребет Ицыл",
-        link: "../images/Itsyl.jpg",
+        link: "../../images/Itsyl.jpg",
     },
     {
         name: "Камчатка",
-        link: "../images/Kamchatka.jpg",
+        link: "../../images/Kamchatka.jpg",
     },
     {
         name: "Камчатка",
