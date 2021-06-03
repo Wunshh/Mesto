@@ -112,18 +112,15 @@ function addCard(element) {
   cardList.append(newCard);
 }
 
-function initialCardsElements() {
-  initialCards.forEach(addCard);
-}
- 
-initialCardsElements();
+initialCards.forEach((element) => {
+    addCard(element);
+})
 
 // function initialCardsElements() {
-//     initialCards.forEach(createCard);
-//     cardList.append(cardTemplate);
+//   initialCards.forEach(addCard);
 // }
-
-// initialCardsElements() 
+ 
+// initialCardsElements();
 
 
 function handlerDelete(evt) {
