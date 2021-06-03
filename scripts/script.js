@@ -104,20 +104,17 @@ function createCard(element) {
         toggleModal(popupTypeImage)
     });
 
-    return cardTemplate;
-}
-
-function createCards(cardData) {
-   const newCard = createCard(cardData);
-   cardList.append(newCard);
+    return cardTemplate;git merge
 }
 
 
-// function initialCardsElements() {
-//     initialCards.forEach(createCard);
-// }
 
-// initialCardsElements();
+function initialCardsElements() {
+    initialCards.forEach(createCard);
+    cardList.append(cardTemplate);
+}
+
+initialCardsElements();
 
 
 
