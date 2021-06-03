@@ -104,7 +104,7 @@ function createCard(element) {
         toggleModal(popupTypeImage)
     });
 
-    return cardTemplate;git merge
+    return cardTemplate;
 }
 
 
