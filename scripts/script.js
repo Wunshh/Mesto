@@ -1,5 +1,3 @@
-const cardTemplate = document.querySelector("#template-card").content.cloneNode(true);
-
 const popupTypeEditButtonOpen = document.querySelector(".profile__edit-button");
 const popupTypeImageAddPhotoButton = document.querySelector(".profile__add-button");
 
@@ -85,7 +83,7 @@ formElement.addEventListener("submit", handleProfileFormSubmit);
 // }
 
 function createCard(element) {
-    
+   const cardTemplate = document.querySelector("#template-card").content.cloneNode(true);
    cardTemplate.querySelector(".card__title").textContent = element.name;
    cardTemplate.querySelector(".card__image").src = element.link;
    cardTemplate.querySelector(".card__image").alt = element.name;
@@ -114,13 +112,7 @@ function addCard(element) {
 
 initialCards.forEach((element) => {
     addCard(element);
-})
-
-// function initialCardsElements() {
-//   initialCards.forEach(addCard);
-// }
- 
-// initialCardsElements();
+});
 
 
 function handlerDelete(evt) {
