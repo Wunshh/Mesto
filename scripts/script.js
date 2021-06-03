@@ -93,29 +93,37 @@ function createCard(element) {
    setEventListeners(cardTemplate);
 
     const popupOpenImage = cardTemplate.querySelector(".card__image");
+
     const popupOpenTitle = cardTemplate.querySelector(".card__title");
 
     popupOpenImage.addEventListener("click", function (element) {
-    
         popupImage.src = popupOpenImage.src;
         popupImage.alt = popupOpenImage.alt;
         popupTitle.textContent = popupOpenTitle.textContent;
 
-        toggleModal(popupTypeImage)
+        toggleModal(popupTypeImage);
     });
 
     return cardTemplate;
 }
 
-
-
-function initialCardsElements() {
-    initialCards.forEach(createCard);
-    cardList.append(cardTemplate);
+function addCard(element) {
+  const newCard = createCard(element);
+  cardList.append(newCard);
 }
 
+function initialCardsElements() {
+  initialCards.forEach(addCard);
+}
+ 
 initialCardsElements();
 
+// function initialCardsElements() {
+//     initialCards.forEach(createCard);
+//     cardList.append(cardTemplate);
+// }
+
+// initialCardsElements() 
 
 
 function handlerDelete(evt) {
