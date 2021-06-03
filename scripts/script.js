@@ -59,12 +59,12 @@ function createCard(cardData) {
     const cardTitle = cardTemplate.querySelector(".card__title");
     const cardImage = cardTemplate.querySelector(".card__image");
 
-    const {name, link} = cardData;
+    const { name, link } = cardData;
 
     cardTitle.textContent = name;
     cardImage.alt = name;
     cardImage.src = link;
-    
+
     setEventListeners(cardTemplate);
 
     const popupOpenImage = cardImage;
@@ -82,8 +82,8 @@ function createCard(cardData) {
 }
 
 function createCards(element) {
-  const newCard = createCard(element);
-  cardList.append(newCard);
+    const newCard = createCard(element);
+    cardList.append(newCard);
 }
 
 initialCards.forEach((element) => {
@@ -106,12 +106,12 @@ function setEventListeners(element) {
 function createNewCards(element) {
     const createNewCards = createCard(element);
     cardList.prepend(createNewCards);
-  }
+}
 
 function handleFormElementNewCardeSubmit(submit) {
     submit.preventDefault();
 
-    createNewCards({name: photoNameInput.value, link: photoSrcInput.value});
+    createNewCards({ name: photoNameInput.value, link: photoSrcInput.value });
 
     toggleModal(popupTypeNewCard);
 
