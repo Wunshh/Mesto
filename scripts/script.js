@@ -6,7 +6,7 @@ const popupTypeImageAddPhotoButton = document.querySelector(".profile__add-butto
 
 const popupTypeEdit = document.querySelector(".popup_type_edit");
 const popupTypeEditButtonClose = popupTypeEdit.querySelector(".popup__close-button");
-const formElement = popupTypeEdit.querySelector(".form");
+const formElementPopupTypeEdit = popupTypeEdit.querySelector(".form");
 const nameInput = popupTypeEdit.querySelector(".form__user-info_user_name");
 const jobInput = popupTypeEdit.querySelector(".form__user-info_user_job");
 
@@ -51,7 +51,7 @@ function handleProfileFormSubmit(evt) {
     toggleModal(popupTypeEdit);
 }
 
-formElement.addEventListener("submit", handleProfileFormSubmit);
+formElementPopupTypeEdit.addEventListener("submit", handleProfileFormSubmit);
 
 function createCard(cardData) {
     const cardTemplate = cardsTemplate.cloneNode(true);
