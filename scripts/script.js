@@ -59,7 +59,7 @@ function createCard(cardData) {
     const cardTitle = cardTemplate.querySelector(".card__title");
     const cardImage = cardTemplate.querySelector(".card__image");
 
-    const { name, link } = cardData;
+    const {name, link} = cardData;
 
     cardTitle.textContent = name;
     cardImage.alt = name;
