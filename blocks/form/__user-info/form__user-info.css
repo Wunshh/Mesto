@@ -7,7 +7,3 @@
     font-size: 14px;
     line-height: 17px;
 }
-
-.form__user-info:nth-of-type(2n) {
-    margin-top: 30px;
-}

@@ -24,12 +24,35 @@ const popupTitle = popupTypeImage.querySelector(".popup__title");
 const profileName = document.querySelector(".profile__name");
 const profileCareer = document.querySelector(".profile__career");
 
-function toggleModal(modal) {
-    modal.classList.toggle("popup_open");
+const popups = document.querySelectorAll('.popup');
+
+popups.forEach((popup) => {
+    popup.addEventListener ('click', (evt) => {
+        if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
+        closePopup(popup);
+    }
+    });
+})
+
+function handlerEsc(evt) {
+    const modal = document.querySelector(".popup_open");
+    if (evt.keyCode === 27) {
+        closePopup(modal);
+    }
+}
+
+function closePopup(modal) {
+    modal.classList.remove("popup_open");
+    document.removeEventListener("keydown", handlerEsc);
+}
+
+function openPopup(modal) {
+    modal.classList.add("popup_open");
+    document.addEventListener("keydown", handlerEsc);
 }
 
 function openPopupTypeEdit() {
-    toggleModal(popupTypeEdit);
+    openPopup(popupTypeEdit);
 
     nameInput.value = profileName.textContent;
     jobInput.value = profileCareer.textContent;
@@ -37,10 +60,10 @@ function openPopupTypeEdit() {
 
 popupTypeEditButtonOpen.addEventListener("click", openPopupTypeEdit);
 
-popupTypeImageAddPhotoButton.addEventListener("click", () => toggleModal(popupTypeNewCard));
-popupTypeImageCloseButton.addEventListener("click", () => toggleModal(popupTypeImage));
-popupTypeEditButtonClose.addEventListener("click", () => toggleModal(popupTypeEdit));
-popupNewCardButtonClose.addEventListener("click", () => toggleModal(popupTypeNewCard));
+popupTypeImageAddPhotoButton.addEventListener("click", () => openPopup(popupTypeNewCard));
+popupTypeImageCloseButton.addEventListener("click", () => closePopup(popupTypeImage));
+popupTypeEditButtonClose.addEventListener("click", () => closePopup(popupTypeEdit));
+popupNewCardButtonClose.addEventListener("click", () => closePopup(popupTypeNewCard));
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -48,7 +71,7 @@ function handleProfileFormSubmit(evt) {
     profileName.textContent = nameInput.value;
     profileCareer.textContent = jobInput.value;
 
-    toggleModal(popupTypeEdit);
+    closePopup(popupTypeEdit);
 }
 
 formElementPopupTypeEdit.addEventListener("submit", handleProfileFormSubmit);
@@ -75,7 +98,7 @@ function createCard(cardData) {
         popupImage.alt = popupOpenImage.alt;
         popupTitle.textContent = popupOpenTitle.textContent;
 
-        toggleModal(popupTypeImage);
+        openPopup(popupTypeImage);
     });
 
     return cardTemplate;
@@ -113,7 +136,7 @@ function handleFormElementNewCardeSubmit(submit) {
 
     createNewCards({ name: photoNameInput.value, link: photoSrcInput.value });
 
-    toggleModal(popupTypeNewCard);
+    closePopup(popupTypeNewCard);
 
     formElementNewCard.reset();
 }
