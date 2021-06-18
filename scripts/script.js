@@ -47,6 +47,7 @@ function closePopup(modal) {
 }
 
 function openPopup(modal) {
+    enableValidation(formArray);
     modal.classList.add("popup_open");
     document.addEventListener("keydown", handlerEsc);
 }
@@ -56,6 +57,7 @@ function openPopupTypeEdit() {
 
     nameInput.value = profileName.textContent;
     jobInput.value = profileCareer.textContent;
+    enableValidation(formArray);
 }
 
 popupTypeEditButtonOpen.addEventListener("click", openPopupTypeEdit);
