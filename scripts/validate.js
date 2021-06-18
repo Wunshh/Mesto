@@ -67,3 +67,5 @@ const enableValidation = (config) => {
         setEventListener(formElement, config);
     });
 };
+
+enableValidation(formArray);
