@@ -43,19 +43,24 @@ function handlerEsc(evt) {
 
 function closePopup(modal) {
     modal.classList.remove("popup_open");
+    document.removeEventListener("keydown", handlerEsc); 
 }
 
 function openPopup(modal) {
-    enableValidation(formArray);
     modal.classList.add("popup_open");
+    document.addEventListener("keydown", handlerEsc); 
 }
 
 function openPopupTypeEdit() {
-    openPopup(popupTypeEdit);
+    const inputList = Array.from(popupTypeEdit.querySelectorAll(".form__user-info"));
+    const buttonElement = popupTypeEdit.querySelector(".form__save-button");
 
+    openPopup(popupTypeEdit);
+    
     nameInput.value = profileName.textContent;
     jobInput.value = profileCareer.textContent;
-    enableValidation(formArray);
+
+    toggleButtonState(inputList, buttonElement, formArray);
 }
 
 popupTypeEditButtonOpen.addEventListener("click", openPopupTypeEdit);
@@ -87,7 +92,6 @@ function createCard(cardData) {
     setEventListeners(cardTemplate);
 
     const popupOpenImage = cardImage;
-    const popupOpenTitle = cardTitle;
 
     popupOpenImage.addEventListener("click", function (element) {
         popupImage.src = link;
@@ -128,6 +132,9 @@ function prependCard(element) {
 }
 
 function handleFormElementNewCardeSubmit(submit) {
+    const inputList = Array.from(formElementNewCard.querySelectorAll(".form__user-info"));
+    const buttonElement = formElementNewCard.querySelector(".form__save-button");
+
     submit.preventDefault();
 
     prependCard({ name: photoNameInput.value, link: photoSrcInput.value });
@@ -136,7 +143,7 @@ function handleFormElementNewCardeSubmit(submit) {
 
     formElementNewCard.reset();
 
-    toggleButtonState(inputList, buttonElement, config);
+    toggleButtonState(inputList, buttonElement, formArray);
 }
 
 formElementNewCard.addEventListener("submit", handleFormElementNewCardeSubmit);
