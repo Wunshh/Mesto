@@ -10,23 +10,15 @@ const popupTypeEditButtonOpen = document.querySelector(".profile__edit-button");
 const popupTypeImageAddPhotoButton = document.querySelector(".profile__add-button"); 
  
 const popupTypeEdit = document.querySelector(".popup_type_edit"); 
-const popupTypeEditButtonClose = popupTypeEdit.querySelector(".popup__close-button"); 
 const formElementPopupTypeEdit = popupTypeEdit.querySelector(".form"); 
 const nameInput = popupTypeEdit.querySelector(".form__user-info_user_name"); 
 const jobInput = popupTypeEdit.querySelector(".form__user-info_user_job"); 
  
 export const popupTypeNewCard = document.querySelector(".popup_type_new-card");
-const popupNewCardButtonClose = popupTypeNewCard.querySelector(".popup__close-button"); 
 const photoNameInput = popupTypeNewCard.querySelector(".form__user-info_photo_name"); 
 const photoSrcInput = popupTypeNewCard.querySelector(".form__user-info_photo_src"); 
 const formElementNewCard = popupTypeNewCard.querySelector(".form"); 
  
-const popupTypeImage = document.querySelector(".popup_type_image"); 
-const popupTypeImageCloseButton = popupTypeImage.querySelector(".popup__close-button"); 
-const popupImage = popupTypeImage.querySelector(".popup__image"); 
-const popupTitle = popupTypeImage.querySelector(".popup__title");  
-
-
 const profileName = document.querySelector(".profile__name");
 const profileCareer = document.querySelector(".profile__career");
 
