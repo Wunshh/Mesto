@@ -1,13 +1,10 @@
-const popupTypeImage = document.querySelector(".popup_type_image");
-const popupImage = popupTypeImage.querySelector(".popup__image");
-const popupTitle = popupTypeImage.querySelector(".popup__title");
-import { openPopup } from "./index.js";
 export default class Card {
-    constructor(data, templateSelector) {
-        this._title = data.name;
-        this._image = data.link;
-        this._alt = data.name;
+    constructor(item, handleCardClick, templateSelector) {
+        this._title = item.name;
+        this._image = item.link;
+        this._alt = item.name;
         this._templateSelector = document.querySelector(templateSelector);
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -17,16 +14,16 @@ export default class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector(".card__image").addEventListener("click", () => {
-            this._handlerOpenPopup();
-        });
-
         this._element.querySelector(".card__button").addEventListener("click", () => {
             this._handlerLike();
         });
 
         this._element.querySelector(".card__remove-button").addEventListener("click", () => {
             this._handlerDelete();
+        });
+
+        this._element.querySelector(".card__image").addEventListener("click", () => {
+            this._handleCardClick(this._image, this._title);
         });
     }
 
@@ -38,13 +35,6 @@ export default class Card {
         this._element.remove();
     }
 
-    _handlerOpenPopup() {
-        popupTitle.textContent = this._title;
-        popupImage.src = this._image;
-        popupImage.alt = this._alt;
-        openPopup(popupTypeImage);
-    }
-
     generateCard() {
         this._element = this._getTemplate();
 
@@ -52,7 +42,7 @@ export default class Card {
 
         this._element.querySelector(".card__title").textContent = this._title;
         this._element.querySelector(".card__image").src = this._image;
-        this._element.querySelector(".card__image").alt = this._title;
+        this._element.querySelector(".card__image").alt = this._alt;
 
         return this._element;
     }
