@@ -37,7 +37,17 @@ const jobInput = popupTypeEdit.querySelector(".form__user-info_user_job");
 const popupTypeNewCard = document.querySelector(".popup_type_new-card");
 const formElementNewCard = popupTypeNewCard.querySelector(".form");
 
+const formArray = {
+    formSelector: ".form",
+    inputSelector: ".form__user-info",
+    submitButtonSelector: ".form__save-button",
+    inactiveButtonClass: "form__save-button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "form__error_visible",
+};
+
 export { 
+    formArray,
     initialCards, 
     cardList, 
     popupTypeEditButtonOpen, 
