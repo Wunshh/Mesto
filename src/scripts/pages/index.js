@@ -1,4 +1,4 @@
-import "../../pages/index.css";
+import "../pages/index.css";
 import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
@@ -51,31 +51,35 @@ const cards = new Section(
 
 cards.renderItems();
 
-const popupWithPhotoForm = new PopupWithForm(".popup_type_new-card", handleFormImageSubmit);
-popupWithPhotoForm.setEventListeners();
-
 function handleFormImageSubmit(item) {
     cardList.prepend(createCard(item));
     popupWithPhotoForm.close();
 }
 
-popupTypeImageAddPhotoButton.addEventListener("click", () => {
+const popupWithPhotoForm = new PopupWithForm(".popup_type_new-card", handleFormImageSubmit);
+popupWithPhotoForm.setEventListeners();
+
+function handelOpenPopupTypeImage() {
     popupWithPhotoForm.open();
     formElementNewCardValidate.resetValidation();
-});
+}
+
+popupTypeImageAddPhotoButton.addEventListener("click", handelOpenPopupTypeImage)
 
 const userInfo = new UserInfo(nameInput, jobInput);
+
+function handelOpenPopupTypeUserInfo() {
+    popupWithUserInfo.open();
+    userInfo.setUserInfo();
+    formElementPopupTypeEditValidate.resetValidation();
+}
 
 const popupWithUserInfo = new PopupWithForm(".popup_type_edit", handleFormUserInfoSubmit);
 popupWithUserInfo.setEventListeners();
 
-popupTypeEditButtonOpen.addEventListener("click", () => {
-    popupWithUserInfo.open();
-    userInfo.getUserInfo();
-    formElementPopupTypeEditValidate.resetValidation();
-});
+popupTypeEditButtonOpen.addEventListener("click", handelOpenPopupTypeUserInfo);
 
 function handleFormUserInfoSubmit() {
-    userInfo.setUserInfo();
+    userInfo.getUserInfo();
     popupWithUserInfo.close();
 }

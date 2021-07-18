@@ -6,12 +6,12 @@ export default class UserInfo {
         this._profileCareer = document.querySelector(".profile__career");
     }
 
-    getUserInfo() {
+    setUserInfo() {
         this._userName.value = this._profileName.textContent;
         this._userJob.value = this._profileCareer.textContent;
     }
 
-    setUserInfo() {
+    getUserInfo() {
         this._profileName.textContent = this._userName.value;
         this._profileCareer.textContent = this._userJob.value;
     }
