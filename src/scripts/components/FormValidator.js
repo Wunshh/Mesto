@@ -42,7 +42,7 @@ export default class FormValidator {
 
     _setEventListener = () => {
         this._toggleButtonState();
-        this._hendelEneterClickRemove();
+        this._handlerEneterClickRemove();
 
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener("input", () => {
@@ -52,7 +52,7 @@ export default class FormValidator {
         });
     };
 
-    _hendelEneterClickRemove() {
+    _handlerEneterClickRemove() {
         this._form.addEventListener('keydown', this._enterClickRemove)
     }
 
