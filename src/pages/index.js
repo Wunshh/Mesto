@@ -1,11 +1,11 @@
-import "../pages/index.css";
-import Card from "../components/Card.js";
+import "./index.css";
+import Card from "../scripts/components/Card.js";
 
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import UserInfo from "../components/UserInfo.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import FormValidator from "../scripts/components/FormValidator.js";
+import Section from "../scripts/components/Section.js";
+import UserInfo from "../scripts/components/UserInfo.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
 
 import { 
     formArray,
@@ -17,7 +17,7 @@ import {
     nameInput, 
     jobInput, 
     formElementNewCard 
-} from "../utils/constants.js";
+} from "../scripts/utils/constants.js";
 
 const formElementNewCardValidate = new FormValidator(formArray, formElementNewCard);
 const formElementPopupTypeEditValidate = new FormValidator(formArray, formElementPopupTypeEdit);
@@ -66,11 +66,16 @@ function handelOpenPopupTypeImage() {
 
 popupTypeImageAddPhotoButton.addEventListener("click", handelOpenPopupTypeImage)
 
-const userInfo = new UserInfo(nameInput, jobInput);
+const userInfo = new UserInfo({
+    userName: ".profile__name", 
+    userJob: ".profile__career"
+});
 
 function handelOpenPopupTypeUserInfo() {
     popupWithUserInfo.open();
-    userInfo.setUserInfo();
+    const userData = userInfo.getUserInfo();
+    nameInput.value = userData.name;
+    jobInput.value = userData.job;
     formElementPopupTypeEditValidate.resetValidation();
 }
 
@@ -79,7 +84,7 @@ popupWithUserInfo.setEventListeners();
 
 popupTypeEditButtonOpen.addEventListener("click", handelOpenPopupTypeUserInfo);
 
-function handleFormUserInfoSubmit() {
-    userInfo.getUserInfo();
+function handleFormUserInfoSubmit(data) {
+    userInfo.setUserInfo(data.name, data.job);
     popupWithUserInfo.close();
 }
