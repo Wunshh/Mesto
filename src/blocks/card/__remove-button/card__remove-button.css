@@ -9,6 +9,7 @@
     border: 0;
     background-color: transparent;
     cursor: pointer;
+    visibility: hidden;
 }
 
 .card__remove-button:hover {

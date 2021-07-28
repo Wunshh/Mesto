@@ -2,6 +2,8 @@ export default class UserInfo {
     constructor({ userName, userJob }) {
         this._titleName = document.querySelector(userName);
         this._subtitlJob = document.querySelector(userJob);
+        this.name = "";
+        this.job = "";
     }
 
     setUserInfo(name, job) {
@@ -15,4 +17,10 @@ export default class UserInfo {
             job: this._subtitlJob.textContent 
         } 
     }
+
+    updateUserInfo() {
+        this._titleName.textContent = this.name;
+        this._subtitlJob.textContent = this.job
+    };
 }
+

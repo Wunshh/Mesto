@@ -6,7 +6,7 @@ import Section from "../scripts/components/Section.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
-
+import Api from "../scripts/components/Api.js";
 import { 
     formArray,
     initialCards, 
@@ -18,6 +18,7 @@ import {
     jobInput, 
     formElementNewCard 
 } from "../scripts/utils/constants.js";
+import { get } from "core-js/core/dict";
 
 const formElementNewCardValidate = new FormValidator(formArray, formElementNewCard);
 const formElementPopupTypeEditValidate = new FormValidator(formArray, formElementPopupTypeEdit);
@@ -25,12 +26,46 @@ const formElementPopupTypeEditValidate = new FormValidator(formArray, formElemen
 formElementNewCardValidate.enableValidation();
 formElementPopupTypeEditValidate.enableValidation();
 
-const popupWithImage = new PopupWithImage(".popup_type_image");
-popupWithImage.setEventListeners();
+// const popupWithImage = new PopupWithImage(".popup_type_image");
+// popupWithImage.setEventListeners();
 
-function handleCardClick(link, name) {
-    popupWithImage.open(link, name);
+// function handleCardClick(link, name) {
+//     popupWithImage.open(link, name);
+// }
+
+
+// const userInfo = new UserInfo({
+//     userName: ".profile__name", 
+//     userJob: ".profile__career"
+// });
+
+// function handelOpenPopupTypeUserInfo() {
+//     popupWithUserInfo.open();
+//     const userData = userInfo.getUserInfo();
+//     nameInput.value = userData.name;
+//     jobInput.value = userData.job;
+//     formElementPopupTypeEditValidate.resetValidation();
+// }
+
+// const popupWithUserInfo = new PopupWithForm(".popup_type_edit", handleFormUserInfoSubmit);
+// popupWithUserInfo.setEventListeners();
+
+// popupTypeEditButtonOpen.addEventListener("click", handelOpenPopupTypeUserInfo);
+
+// function handleFormUserInfoSubmit(data) {
+//     userInfo.setUserInfo(data.name, data.job);
+//     popupWithUserInfo.close();
+// }
+
+
+const config = {
+    url: 'https://mesto.nomoreparties.co/v1/cohort-26',
+    headers: {
+        authorization: "bf09fd5b-3c45-4e70-9b69-806c8df2b150",
+        'Content-Type': 'application/json'
+    }
 }
+const api = new Api(config);
 
 function createCard(item) {
     const card = new Card(item, handleCardClick, "#template-card").generateCard();
@@ -40,20 +75,30 @@ function createCard(item) {
 
 const cards = new Section(
     {
-        item: initialCards,
         renderer: (item) => {
-            const card = createCard(item);
-            cards.addItem(card);
+            cards.addItem(createCard(item))
         },
     },
     cardList
 );
 
-cards.renderItems();
+api.getInitialCards()
+.then((cardsArray) => {
+    cards.renderItems(cardsArray);
+})
+.catch((err) => {
+    console.log(err);
+});
 
 function handleFormImageSubmit(item) {
-    cardList.prepend(createCard(item));
-    popupWithPhotoForm.close();
+    api.postCards(item)
+    .then((item) => {
+        cardList.prepend(createCard(item));
+        popupWithPhotoForm.close();
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 }
 
 const popupWithPhotoForm = new PopupWithForm(".popup_type_new-card", handleFormImageSubmit);
@@ -64,27 +109,22 @@ function handelOpenPopupTypeImage() {
     formElementNewCardValidate.resetValidation();
 }
 
-popupTypeImageAddPhotoButton.addEventListener("click", handelOpenPopupTypeImage)
+popupTypeImageAddPhotoButton.addEventListener("click", handelOpenPopupTypeImage);
 
-const userInfo = new UserInfo({
-    userName: ".profile__name", 
-    userJob: ".profile__career"
-});
+// const userInfo = new UserInfo({
+//     userName: ".profile__name", 
+//     userJob: ".profile__career"
+// });
 
-function handelOpenPopupTypeUserInfo() {
-    popupWithUserInfo.open();
-    const userData = userInfo.getUserInfo();
-    nameInput.value = userData.name;
-    jobInput.value = userData.job;
-    formElementPopupTypeEditValidate.resetValidation();
-}
-
-const popupWithUserInfo = new PopupWithForm(".popup_type_edit", handleFormUserInfoSubmit);
-popupWithUserInfo.setEventListeners();
-
-popupTypeEditButtonOpen.addEventListener("click", handelOpenPopupTypeUserInfo);
-
-function handleFormUserInfoSubmit(data) {
-    userInfo.setUserInfo(data.name, data.job);
-    popupWithUserInfo.close();
-}
+// api.getUserInfo()
+// .then(data => {
+//     const user = {
+//         name: data.name, 
+//         job: data.about
+//     }
+//     userInfo.setUserInfo(user);
+//     userInfo.updateUserInfo()
+// })
+// .catch((err) => {
+//     console.log(err);
+// });

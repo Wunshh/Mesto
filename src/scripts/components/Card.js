@@ -3,8 +3,8 @@ export default class Card {
         this._title = item.name;
         this._image = item.link;
         this._alt = item.name;
+        this._handleCardClick = handleCardClick; 
         this._templateSelector = document.querySelector(templateSelector);
-        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -13,32 +13,8 @@ export default class Card {
         return cardElement;
     }
 
-    _setEventListeners() {
-        this._element.querySelector(".card__button").addEventListener("click", () => {
-            this._handlerLike();
-        });
-
-        this._element.querySelector(".card__remove-button").addEventListener("click", () => {
-            this._handlerDelete();
-        });
-
-        this._element.querySelector(".card__image").addEventListener("click", () => {
-            this._handleCardClick(this._image, this._title);
-        });
-    }
-
-    _handlerLike() {
-        this._element.querySelector(".card__button").classList.toggle("card__button_active");
-    }
-
-    _handlerDelete() {
-        this._element.remove();
-    }
-
     generateCard() {
         this._element = this._getTemplate();
-
-        this._setEventListeners();
 
         this._element.querySelector(".card__title").textContent = this._title;
         this._element.querySelector(".card__image").src = this._image;
@@ -47,3 +23,25 @@ export default class Card {
         return this._element;
     }
 }
+
+// _setEventListeners() {
+//     this._element.querySelector(".card__button").addEventListener("click", () => {
+//         this._handlerLike();
+//     });
+
+//     this._element.querySelector(".card__remove-button").addEventListener("click", () => {
+//         this._handlerDelete();
+//     });
+
+//     this._element.querySelector(".card__image").addEventListener("click", () => {
+//         this._handleCardClick(this._image, this._title);
+//     });
+// }
+
+// _handlerLike() {
+//     this._element.querySelector(".card__button").classList.toggle("card__button_active");
+// }
+
+// _handlerDelete() {
+//     this._element.remove();
+// }

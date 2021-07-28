@@ -7,10 +7,18 @@ module.exports = {
   entry: {
     main: './src/pages/index.js'
   },
+  
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
     publicPath: '',
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
+    open: 'Google Chrome',
+    compress: true,
+    port: 8080
   },
   mode: 'development',
   devServer: {

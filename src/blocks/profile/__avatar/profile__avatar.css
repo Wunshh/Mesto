@@ -2,4 +2,9 @@
     border-radius: 50%;
     border: none;
     max-width: 120px;
+    cursor: pointer;
+}
+
+.profile__avatar:hover {
+    opacity: 0.25;
 }
