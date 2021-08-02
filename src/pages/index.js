@@ -11,7 +11,6 @@ import PopupWithSubmit from "../scripts/components/PopupWithSubmit.js";
 
 import { 
     formArray,
-    initialCards, 
     cardList, 
     popupTypeEditButtonOpen, 
     popupTypeImageAddPhotoButton, 
