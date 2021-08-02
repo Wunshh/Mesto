@@ -1,8 +1,9 @@
 .profile__avatar {
     border-radius: 50%;
     border: none;
-    max-width: 120px;
     cursor: pointer;
+    height: 120px;
+    width: 120px;
 }
 
 .profile__avatar:hover {
