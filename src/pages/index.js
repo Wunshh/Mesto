@@ -180,7 +180,7 @@ const popupDeleteCard = new PopupWithSubmit(".popup_delete_image");
 popupDeleteCard.setEventListeners();
 
 function handlerLike(card, item) {
-    const likeSwitch = card.likeContains(item) ? api.handlerlDeleteLike(item._id) : api.handlerlLike(item._id);
+    const likeSwitch = card.likeContains() ? api.handlerlDeleteLike(item._id) : api.handlerlLike(item._id);
     likeSwitch
         .then((item) => {
             card.handlerLike(item);
