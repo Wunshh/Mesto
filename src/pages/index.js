@@ -94,7 +94,7 @@ buttonOpenPopupUserAvatar.addEventListener("click", () => {
     formElementPopupNewAvatarValidate.resetValidation();
 });
 
-const popupChangeUserAvatar = new PopupWithForm(".popup_сhange_avatar", handleFormUserAvatarSubmit);
+const popupChangeUserAvatar = new PopupWithForm(".popup-сhange_avatar", handleFormUserAvatarSubmit);
 popupChangeUserAvatar.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup_type_image");
