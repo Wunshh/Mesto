@@ -45,7 +45,7 @@ export default class Card {
     }
 
     handlerLike() { 
-        this._isLikeContains = this._likes.includes((item) => {
+        this._isLikeContains = this._likes.filter((item) => {
            return item._id === this._userId
         }).length > 0;
         if (this._isLikeContains) {

@@ -11,7 +11,7 @@ const popupTypeNewCard = document.querySelector(".popup_type_new-card");
 const formElementNewCard = popupTypeNewCard.querySelector(".form");
 
 const buttonOpenPopupUserAvatar = document.querySelector(".profile__avatar");
-const popupNewAvatar = document.querySelector(".popup_сhange_avatar");
+const popupNewAvatar = document.querySelector(".popup__сhange_avatar");
 const formElementPopupNewAvatar = popupNewAvatar.querySelector(".form");
 
 const formArray = {
