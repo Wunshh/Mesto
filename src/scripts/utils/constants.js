@@ -20,7 +20,7 @@ const formArray = {
     submitButtonSelector: ".form__save-button",
     inactiveButtonClass: "form__save-button_disabled",
     inputErrorClass: "popup__input_type_error",
-    errorClass: "form__error_visible",
+    errorClass: "form__error_visible"
 };
 
 export { 

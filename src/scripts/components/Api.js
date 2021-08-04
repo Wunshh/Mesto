@@ -46,24 +46,10 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     });
   }
- 
 
-  handlerlLike(item) {
+  changeLikeCard(item, like) {
     return fetch(`${this._url}/cards/likes/${item}`, {
-        method: 'PUT',
-        headers: this._headers,
-    })
-    .then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-    });
-  }
-  
-  handlerlDeleteLike(item) {
-    return fetch(`${this._url}/cards/likes/${item}`, {
-        method: 'DELETE',
+        method: like ? 'DELETE' : 'PUT',
         headers: this._headers,
     })
     .then((res) => {

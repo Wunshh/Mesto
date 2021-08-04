@@ -1,9 +1,8 @@
 export default class UserInfo {
-    constructor({userName, userJob, userAvatar, userId}) {
+    constructor({userName, userJob, userAvatar}) {
         this._titleName = document.querySelector(userName);
         this._subtitlJob = document.querySelector(userJob);
         this._userAvatar = document.querySelector(userAvatar);
-        this._userId = userId
     }
 
     setUserInfo(item) {

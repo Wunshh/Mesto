@@ -6,7 +6,7 @@ export default class Card {
         this._alt = item.name;
         this._likes = item.likes;
         this._ownerId = item.owner._id;
-        this._cardId = item._id;
+        this.cardId = item._id;
         this._userId = userId;
         this._templateSelector = document.querySelector(templateSelector); 
         this._handleCardClick = handleCardClick;
@@ -22,7 +22,7 @@ export default class Card {
  
     _setEventListeners() { 
         this._element.querySelector(".card__button").addEventListener("click", () => { 
-            this._handlerLikeAdd(); 
+            this._handlerLikeAdd(this); 
         }); 
  
         this._element.querySelector(".card__remove-button").addEventListener("click", () => { 
@@ -44,10 +44,11 @@ export default class Card {
         return this._isLikeContains
     }
 
-    handlerLike() { 
-        this._isLikeContains = this._likes.filter((item) => {
+    handlerLike(item) { 
+        this._isLikeContains = item.likes.filter((item) => {
            return item._id === this._userId
         }).length > 0;
+        this._element.querySelector(".card__botton-counter").textContent = item.likes.length;
         if (this._isLikeContains) {
             this._element.querySelector(".card__button").classList.add("card__button_active");
         } else {
@@ -60,7 +61,7 @@ export default class Card {
     }
 
     handlerCardIdReturn() {
-        return this._cardId;
+        return this.cardId;
     }
  
     generateCard() { 
@@ -75,7 +76,6 @@ export default class Card {
         this._element.querySelector(".card__title").textContent = this._title; 
         this._element.querySelector(".card__image").src = this._image; 
         this._element.querySelector(".card__image").alt = this._alt;
-        this._element.querySelector(".card__botton-counter").textContent = Array.from(this._likes).length;
  
         return this._element; 
     } 

@@ -1,3 +1,5 @@
+let userId;
+
 import "./index.css";
 import Card from "../scripts/components/Card.js";
 
@@ -22,7 +24,6 @@ import {
     formElementPopupNewAvatar
 } from "../scripts/utils/constants.js";
 
-
 const formElementNewCardValidate = new FormValidator(formArray, formElementNewCard);
 const formElementPopupTypeEditValidate = new FormValidator(formArray, formElementPopupTypeEdit);
 const formElementPopupNewAvatarValidate = new FormValidator(formArray, formElementPopupNewAvatar);
@@ -44,7 +45,6 @@ const userInfo = new UserInfo({
     userName: ".profile__name",
     userJob: ".profile__career",
     userAvatar: ".profile__avatar",
-    userId: null,
 });
 
 function handleFormUserInfoSubmit(item) {
@@ -57,7 +57,7 @@ function handleFormUserInfoSubmit(item) {
             console.log(err);
         })
         .finally(() => {
-            popupWithUserInfo.renderLoading(false);
+            popupWithUserInfo.renderLoading(false, "Сохранить");
         });
 }
 
@@ -85,7 +85,7 @@ function handleFormUserAvatarSubmit(item) {
             console.log(err);
         })
         .finally(() => {
-            popupChangeUserAvatar.renderLoading(false);
+            popupChangeUserAvatar.renderLoading(false, "Сохранить");
         });
 }
 
@@ -110,7 +110,7 @@ function handleFormImageSubmit(item) {
             console.log(err);
         })
         .finally(() => {
-            popupWithPhotoForm.renderLoading(false);
+            popupWithPhotoForm.renderLoading(false, "Создать");
         });
 }
 
@@ -135,6 +135,7 @@ const cards = new Section(
 
 Promise.all([api.getInitialCards(), api.getUserInfoFromServer()])
     .then(([dataCards, dataUser]) => {
+        userId = dataUser._id;
         cards.renderItems(dataCards);
         userInfo.setUserInfo(dataUser);
     })
@@ -168,20 +169,19 @@ function createCard(item) {
         item: item,
         handleCardClick: handleCardClick,
         templateSelector: "#template-card",
-        userId: "a872eaaa840b9f74f006f988",
+        userId: userId,
         handlerOpenDeletePopup: () => handlerDelete(card),
-        handlerLikeAdd: () => handlerLike(card, item),
+        handlerLikeAdd: () => handlerLike(card),
     });
-
+   
     return card.generateCard();
 }
 
 const popupDeleteCard = new PopupWithSubmit(".popup_delete_image");
 popupDeleteCard.setEventListeners();
 
-function handlerLike(card, item) {
-    const likeSwitch = card.likeContains() ? api.handlerlDeleteLike(item._id) : api.handlerlLike(item._id);
-    likeSwitch
+function handlerLike(card) {
+    api.changeLikeCard(card.cardId, card.likeContains())
         .then((item) => {
             card.handlerLike(item);
         })
