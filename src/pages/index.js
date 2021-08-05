@@ -66,6 +66,7 @@ popupWithUserInfo.setEventListeners();
 
 function handelOpenPopupTypeUserInfo() {
     popupWithUserInfo.open();
+    formElementPopupNewAvatarValidate.resetValidation();
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.name;
     jobInput.value = userData.about;
