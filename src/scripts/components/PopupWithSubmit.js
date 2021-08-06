@@ -3,6 +3,7 @@ import Popup from "./Popup.js";
 export default class PopupWithSubmit extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
+        this._botton = this._popup.querySelector(".popup__save-button");
     }
 
     handleFormDelete(occasion) {
@@ -22,9 +23,9 @@ export default class PopupWithSubmit extends Popup {
 
     renderLoading(isLoading) {
         if (isLoading) {
-          this._popup.querySelector(".popup__save-button").textContent = "Удаление..."
+            this._botton.textContent = "Удаление..."
         } else {
-          this._popup.querySelector(".popup__save-button").textContent = "Да"
+            this._botton.textContent = "Да"
         }
     }
 }
