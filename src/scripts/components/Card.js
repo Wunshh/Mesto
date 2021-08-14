@@ -45,9 +45,9 @@ export default class Card {
     }
 
     handlerLike(item) { 
-        this._isLikeContains = item.likes.filter((item) => {
+        this._isLikeContains = item.likes.some((item) => {
            return item._id === this._userId
-        }).length > 0;
+        });
         this._element.querySelector(".card__botton-counter").textContent = item.likes.length;
         if (this._isLikeContains) {
             this._element.querySelector(".card__button").classList.add("card__button_active");
